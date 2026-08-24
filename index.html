@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لبنات الحلول الذكية | Labenat Smart Solutions</title>
+<meta name="description" content="لبنات الحلول الذكية — شركة سعودية متخصصة في الذكاء الاصطناعي والحلول التقنية للقطاع الصحي.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --navy:#0B1E3B;
+  --blue:#1E5F8C;
+  --sky:#3AADE3;
+  --white:#FFFFFF;
+  --light:#F5F7FA;
+  --mint:#2ECC71;
+  --radius:18px;
+  --shadow:0 10px 30px rgba(11,30,59,.08);
+  --shadow-hover:0 20px 45px rgba(11,30,59,.16);
+  --transition:all .35s cubic-bezier(.25,.8,.25,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Cairo',sans-serif;
+  color:var(--navy);
+  background:var(--white);
+  overflow-x:hidden;
+  line-height:1.8;
+}
+::selection{background:var(--sky);color:var(--white)}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--light)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--blue),var(--sky));border-radius:8px}
+::-webkit-scrollbar-thumb:hover{background:var(--navy)}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+.container{width:min(1140px,92%);margin-inline:auto}
+section{position:relative}
+.section-pad{padding:96px 0}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.85rem;font-weight:700;letter-spacing:.5px;
+  color:var(--sky);background:rgba(58,173,227,.12);
+  padding:6px 16px;border-radius:50px;margin-bottom:14px;
+}
+.section-title{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;margin-bottom:14px}
+.section-sub{color:#5c6b82;max-width:640px;margin:0 auto 0}
+.text-center{text-align:center}
+
+/* ===== Animations (scroll) ===== */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-50px);transition:opacity .8s ease,transform .8s ease}
+.reveal-r{opacity:0;transform:translateX(50px);transition:opacity .8s ease,transform .8s ease}
+.reveal-l.visible,.reveal-r.visible{opacity:1;transform:none}
+
+/* ===== Navbar ===== */
+.navbar{
+  position:fixed;top:0;right:0;left:0;z-index:1000;
+  padding:14px 0;transition:var(--transition);
+}
+.navbar.scrolled{
+  background:rgba(11,30,59,.85);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 6px 24px rgba(11,30,59,.25);
+  padding:10px 0;
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;color:var(--white)}
+.logo-mark{
+  width:46px;height:46px;border-radius:12px;
+  background:linear-gradient(135deg,var(--sky),var(--blue));
+  display:grid;place-items:center;font-size:1.2rem;color:#fff;
+  box-shadow:0 6px 18px rgba(58,173,227,.4);
+}
+.logo-text{line-height:1.25}
+.logo-text b{display:block;font-size:1.05rem;font-weight:800}
+.logo-text span{font-size:.72rem;color:var(--sky);font-family:'Tajawal',sans-serif;letter-spacing:1px}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{
+  color:rgba(255,255,255,.85);font-weight:600;font-size:.95rem;
+  padding:8px 14px;border-radius:8px;transition:var(--transition);position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:2px;right:14px;left:14px;height:2px;
+  background:var(--sky);border-radius:2px;transform:scaleX(0);transform-origin:center;transition:transform .3s;
+}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{transform:scaleX(1)}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 30px;border-radius:50px;font-weight:700;font-size:1rem;
+  cursor:pointer;border:none;transition:var(--transition);
+}
+.btn-sky{
+  background:linear-gradient(135deg,var(--sky),#2a95c9);color:#fff;
+  box-shadow:0 8px 22px rgba(58,173,227,.4);
+}
+.btn-sky:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(58,173,227,.5)}
+.btn-outline{
+  background:rgba(255,255,255,.08);color:#fff;
+  border:1.5px solid rgba(255,255,255,.6);backdrop-filter:blur(6px);
+}
+.btn-outline:hover{background:#fff;color:var(--navy);transform:translateY(-3px)}
+.btn-white{background:#fff;color:var(--blue);box-shadow:0 10px 26px rgba(11,30,59,.25)}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(11,30,59,.3)}
+.nav-cta{padding:10px 24px;font-size:.9rem}
+.hamburger{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+
+/* ===== Hero ===== */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(160deg,var(--navy) 0%,#123a63 55%,var(--blue) 100%);
+  display:flex;align-items:center;color:#fff;
+  padding:130px 0 80px;overflow:hidden;
+}
+#particles{position:absolute;inset:0;z-index:0}
+.hero::after{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse at 75% 20%,rgba(58,173,227,.18),transparent 55%);
+}
+.hero-inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;
+}
+.hero h1{
+  font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:800;line-height:1.4;margin-bottom:20px;
+}
+.hero h1 em{font-style:normal;color:var(--sky);position:relative}
+.hero p.sub{font-size:1.15rem;color:rgba(255,255,255,.82);max-width:560px;margin-bottom:34px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.hero-stats{
+  display:flex;gap:14px;margin-top:48px;flex-wrap:wrap;
+}
+.stat-chip{
+  flex:1;min-width:130px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-radius:var(--radius);padding:18px 16px;text-align:center;
+  transition:var(--transition);
+}
+.stat-chip:hover{background:rgba(255,255,255,.12);transform:translateY(-4px)}
+.stat-chip b{font-family:'Tajawal',sans-serif;font-size:1.7rem;color:var(--sky);display:block;font-weight:700}
+.stat-chip span{font-size:.82rem;color:rgba(255,255,255,.75)}
+/* Neural brain SVG */
+.hero-visual{display:grid;place-items:center}
+.brain-wrap{position:relative;width:min(420px,100%)}
+.brain-wrap::before{
+  content:'';position:absolute;inset:-14%;
+  background:radial-gradient(circle,rgba(58,173,227,.22),transparent 65%);
+  border-radius:50%;animation:pulseGlow 4s ease-in-out infinite;
+}
+@keyframes pulseGlow{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+#brainSvg{width:100%;height:auto;filter:drop-shadow(0 10px 40px rgba(58,173,227,.35))}
+.scroll-down{
+  position:absolute;bottom:26px;right:50%;transform:translateX(50%);z-index:2;
+  color:rgba(255,255,255,.6);font-size:.8rem;text-align:center;animation:bounce 2.2s infinite;
+}
+@keyframes bounce{0%,100%{transform:translateX(50%) translateY(0)}50%{transform:translateX(50%) translateY(10px)}}
+
+/* ===== About ===== */
+.about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-text h2{font-size:clamp(1.7rem,3vw,2.3rem);font-weight:800;margin:12px 0 18px}
+.about-text p{color:#5c6b82;margin-bottom:16px;font-size:1.05rem}
+.about-points{display:grid;gap:12px;margin-top:24px}
+.about-points li{display:flex;align-items:center;gap:12px;font-weight:600}
+.about-points i{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  background:rgba(46,204,113,.15);color:var(--mint);
+  display:grid;place-items:center;font-size:.85rem;
+}
+.about-img{position:relative}
+.about-img img{
+  border-radius:24px;box-shadow:var(--shadow-hover);
+  width:100%;height:420px;object-fit:cover;
+}
+.about-img::before{
+  content:'';position:absolute;inset:-18px -18px auto auto;width:120px;height:120px;
+  border-radius:24px;background:linear-gradient(135deg,var(--sky),var(--blue));z-index:-1;opacity:.25;
+}
+.about-img::after{
+  content:'';position:absolute;inset:auto auto -18px -18px;width:160px;height:160px;
+  border-radius:24px;background:linear-gradient(135deg,var(--mint),var(--sky));z-index:-1;opacity:.18;
+}
+.about-badge{
+  position:absolute;bottom:26px;right:-18px;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.6);
+  border-radius:16px;padding:14px 20px;box-shadow:var(--shadow);
+  display:flex;align-items:center;gap:12px;
+}
+.about-badge i{font-size:1.6rem;color:var(--mint)}
+.about-badge b{display:block;font-family:'Tajawal',sans-serif;font-size:1.15rem}
+.about-badge span{font-size:.78rem;color:#5c6b82}
+
+/* ===== Vision & Mission ===== */
+.vm{background:var(--light)}
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px}
+.vm-card{
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:var(--radius);padding:40px 34px;
+  box-shadow:var(--shadow);transition:var(--transition);position:relative;overflow:hidden;
+}
+.vm-card::before{
+  content:'';position:absolute;top:0;right:0;width:100%;height:5px;
+  background:linear-gradient(90deg,var(--sky),var(--blue));
+}
+.vm-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover)}
+.vm-icon{
+  width:66px;height:66px;border-radius:18px;
+  display:grid;place-items:center;font-size:1.6rem;color:#fff;margin-bottom:20px;
+  background:linear-gradient(135deg,var(--blue),var(--sky));
+  box-shadow:0 10px 24px rgba(30,95,140,.35);
+}
+.vm-card.mission .vm-icon{background:linear-gradient(135deg,var(--mint),#27ae60);box-shadow:0 10px 24px rgba(46,204,113,.35)}
+.vm-card h3{font-size:1.45rem;font-weight:800;margin-bottom:12px}
+.vm-card p{color:#5c6b82}
+
+/* ===== Services ===== */
+.services{background:#fff}
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px;
+}
+.service-card{
+  background:rgba(245,247,250,.7);
+  border:1px solid rgba(11,30,59,.06);
+  backdrop-filter:blur(10px);
+  border-radius:var(--radius);padding:36px 28px;text-align:center;
+  transition:var(--transition);position:relative;overflow:hidden;
+}
+.service-card::after{
+  content:'';position:absolute;bottom:0;right:0;left:0;height:4px;
+  background:linear-gradient(90deg,var(--sky),var(--mint));
+  transform:scaleX(0);transition:transform .4s;transform-origin:right;
+}
+.service-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-hover);background:#fff}
+.service-card:hover::after{transform:scaleX(1)}
+.service-icon{
+  width:72px;height:72px;margin:0 auto 20px;border-radius:20px;
+  display:grid;place-items:center;font-size:1.7rem;color:#fff;
+  transition:var(--transition);
+}
+.service-card:hover .service-icon{transform:scale(1.1) rotate(-6deg)}
+.si-1{background:linear-gradient(135deg,#1E5F8C,#3AADE3)}
+.si-2{background:linear-gradient(135deg,#3AADE3,#7ecfef)}
+.si-3{background:linear-gradient(135deg,#2ECC71,#7ee2a8)}
+.si-4{background:linear-gradient(135deg,#8e5cf0,#c39bff)}
+.si-5{background:linear-gradient(135deg,#f0625c,#f79d84)}
+.service-card h3{font-size:1.2rem;font-weight:800;margin-bottom:10px}
+.service-card p{color:#5c6b82;font-size:.94rem}
+
+/* ===== Methodology (dark timeline) ===== */
+.method{background:var(--navy);color:#fff;overflow:hidden}
+.method::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 15% 20%,rgba(58,173,227,.12),transparent 50%),
+    radial-gradient(ellipse at 85% 80%,rgba(46,204,113,.08),transparent 50%);
+}
+.method .section-title{color:#fff}
+.method .section-sub{color:rgba(255,255,255,.7)}
+.timeline{
+  position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:18px;
+  margin-top:70px;
+}
+.timeline::before{
+  content:'';position:absolute;top:33px;right:8%;left:8%;height:3px;
+  background:linear-gradient(90deg,var(--sky),var(--mint));opacity:.45;border-radius:3px;
+}
+.step{text-align:center;position:relative;z-index:1}
+.step-circle{
+  width:66px;height:66px;margin:0 auto 18px;border-radius:50%;
+  background:rgba(255,255,255,.06);
+  border:2px solid var(--sky);
+  backdrop-filter:blur(8px);
+  display:grid;place-items:center;
+  font-family:'Tajawal',sans-serif;font-size:1.4rem;font-weight:700;color:var(--sky);
+  transition:var(--transition);
+  box-shadow:0 0 0 6px rgba(11,30,59,1);
+}
+.step:hover .step-circle{
+  background:linear-gradient(135deg,var(--sky),var(--blue));color:#fff;
+  box-shadow:0 0 0 6px rgba(11,30,59,1),0 0 30px rgba(58,173,227,.55);
+  transform:scale(1.08);
+}
+.step h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:#fff}
+.step p{font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.7}
+
+/* ===== Why us ===== */
+.why{background:#fff}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px}
+.why-item{
+  display:flex;gap:18px;align-items:flex-start;
+  background:rgba(245,247,250,.7);
+  border:1px solid rgba(11,30,59,.06);
+  backdrop-filter:blur(10px);
+  border-radius:var(--radius);padding:28px;transition:var(--transition);
+}
+.why-item:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover);background:#fff}
+.why-item i{
+  width:56px;height:56px;flex-shrink:0;border-radius:16px;
+  display:grid;place-items:center;font-size:1.3rem;color:#fff;
+  background:linear-gradient(135deg,var(--blue),var(--sky));
+}
+.why-item:nth-child(2) i{background:linear-gradient(135deg,var(--mint),#27ae60)}
+.why-item:nth-child(3) i{background:linear-gradient(135deg,#8e5cf0,#6a3fd6)}
+.why-item:nth-child(4) i{background:linear-gradient(135deg,#f0625c,#d8433c)}
+.why-item:nth-child(5) i{background:linear-gradient(135deg,var(--sky),#2a95c9)}
+.why-item h3{font-size:1.1rem;font-weight:800;margin-bottom:6px}
+.why-item p{color:#5c6b82;font-size:.92rem}
+
+/* ===== CTA ===== */
+.cta{
+  background:linear-gradient(135deg,var(--blue),var(--sky));
+  color:#fff;text-align:center;overflow:hidden;
+}
+.cta::before{
+  content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;
+  background:rgba(255,255,255,.08);
+}
+.cta::after{
+  content:'';position:absolute;bottom:-80px;left:-40px;width:320px;height:320px;border-radius:50%;
+  background:rgba(255,255,255,.06);
+}
+.cta h2{font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:800;margin-bottom:16px}
+.cta p{max-width:620px;margin:0 auto 34px;color:rgba(255,255,255,.9);font-size:1.08rem}
+
+/* ===== Footer ===== */
+.footer{background:var(--navy);color:rgba(255,255,255,.75);padding-top:70px}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:44px;padding-bottom:50px}
+.footer .logo{margin-bottom:18px}
+.footer p{font-size:.92rem;line-height:1.9}
+.footer h4{color:#fff;font-size:1.05rem;font-weight:700;margin-bottom:20px;position:relative;padding-bottom:10px}
+.footer h4::after{
+  content:'';position:absolute;bottom:0;right:0;width:38px;height:3px;border-radius:3px;
+  background:linear-gradient(90deg,var(--sky),var(--mint));
+}
+.footer-links li{margin-bottom:10px}
+.footer-links a{transition:var(--transition);font-size:.95rem}
+.footer-links a:hover{color:var(--sky);padding-right:6px}
+.contact-info li{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:.93rem}
+.contact-info i{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  background:rgba(58,173,227,.14);color:var(--sky);
+  display:grid;place-items:center;font-size:.9rem;
+}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);
+  padding:22px 0;text-align:center;font-size:.88rem;font-family:'Tajawal',sans-serif;
+}
+
+/* ===== Responsive ===== */
+@media(max-width:992px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero p.sub{margin-inline:auto}
+  .hero-btns{justify-content:center}
+  .hero-visual{order:-1}
+  .brain-wrap{width:min(300px,80%)}
+  .services-grid,.why-grid{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:repeat(3,1fr);gap:36px 18px}
+  .timeline::before{display:none}
+  .about-grid,.vm-grid,.footer-grid{grid-template-columns:1fr}
+  .about-img img{height:340px}
+  .about-badge{right:12px}
+}
+@media(max-width:640px){
+  .section-pad{padding:70px 0}
+  .nav-links{
+    position:fixed;top:0;right:0;height:100vh;width:min(300px,80vw);
+    background:rgba(11,30,59,.97);backdrop-filter:blur(16px);
+    flex-direction:column;align-items:flex-start;justify-content:center;
+    padding:40px;gap:18px;transform:translateX(100%);transition:transform .4s ease;
+    z-index:1001;box-shadow:-10px 0 40px rgba(0,0,0,.35);
+  }
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{font-size:1.15rem}
+  .nav-cta{display:none}
+  .hamburger{display:block;z-index:1002}
+  .services-grid,.why-grid{grid-template-columns:1fr}
+  .timeline{grid-template-columns:repeat(2,1fr)}
+  .stat-chip b{font-size:1.4rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ Navbar ============ -->
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">
+      <span class="logo-mark"><i class="fa-solid fa-brain"></i></span>
+      <span class="logo-text">
+        <b>لبنات الحلول الذكية</b>
+        <span>LABENAT SMART SOLUTIONS</span>
+      </span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">الرئيسية</a>
+      <a href="#about">من نحن</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#method">منهجيتنا</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <a href="#contact" class="btn btn-sky nav-cta"><i class="fa-solid fa-headset"></i> احصل على استشارة</a>
+    <button class="hamburger" id="hamburger" aria-label="القائمة"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- ============ Hero ============ -->
+<section class="hero" id="home">
+  <canvas id="particles"></canvas>
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <h1>حلول ذكية..<br>صحة بأفق <em>رقمي جديد</em></h1>
+      <p class="sub">نبني أنظمة صحية ذكية مدعومة بالذكاء الاصطناعي لتمكين المنشآت الصحية في المملكة العربية السعودية من التميز والريادة.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn btn-sky"><i class="fa-solid fa-rocket"></i> اكتشف خدماتنا</a>
+        <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-phone"></i> تواصل معنا</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-chip"><b class="counter" data-target="1" data-suffix="+">0</b><span>مشروع تقني صحي</span></div>
+        <div class="stat-chip"><b class="counter" data-target="00" data-suffix="+">0</b><span>منشأة صحية شريكة</span></div>
+        <div class="stat-chip"><b class="counter" data-target="99" data-suffix="%">0</b><span>رضا العملاء</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="brain-wrap">
+        <svg id="brainSvg" viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="gBrain" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#3AADE3"/><stop offset="1" stop-color="#2ECC71"/>
+            </linearGradient>
+          </defs>
+          <g id="netLines" stroke="url(#gBrain)" stroke-width="1.2" fill="none" opacity=".55"></g>
+          <g id="netNodes"></g>
+          <g id="brainPath" stroke="url(#gBrain)" stroke-width="2.4" fill="rgba(58,173,227,.06)">
+            <path d="M200 60 C 150 40, 100 70, 95 120 C 60 140, 60 200, 95 220 C 100 270, 150 300, 200 285 C 250 300, 300 270, 305 220 C 340 200, 340 140, 305 120 C 300 70, 250 40, 200 60 Z"/>
+            <path d="M200 60 C 195 120, 205 220, 200 285" opacity=".5"/>
+            <path d="M130 110 C 160 130, 175 150, 180 190" opacity=".5"/>
+            <path d="M270 110 C 240 130, 225 150, 220 190" opacity=".5"/>
+            <path d="M115 190 C 150 210, 175 230, 185 260" opacity=".5"/>
+            <path d="M285 190 C 250 210, 225 230, 215 260" opacity=".5"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-down"><i class="fa-solid fa-chevron-down"></i></div>
+</section>
+
+<!-- ============ About ============ -->
+<section class="about section-pad" id="about">
+  <div class="container about-grid">
+    <div class="about-text reveal-r">
+      <span class="eyebrow"><i class="fa-solid fa-circle-info"></i> من نحن</span>
+      <h2>شريكك الموثوق في التحول الرقمي الصحي</h2>
+      <p>تأسست «لبنات الحلول الذكية» في العاصمة الرياض بهدف إعادة تشكيل مستقبل القطاع الصحي عبر تقنيات الذكاء الاصطناعي المتقدمة.</p>
+      <p>نحن شريكك الموثوق في رحلة التحول الرقمي، نقدم حلولاً تقنية مبتكرة في مجال الصحة تجمع بين الدقة العلمية والكفاءة التشغيلية.</p>
+      <ul class="about-points">
+        <li><i class="fa-solid fa-check"></i> حلول متوافقة مع رؤية المملكة 2030</li>
+        <li><i class="fa-solid fa-check"></i> فريق متخصص في الذكاء الاصطناعي والصحة الرقمية</li>
+        <li><i class="fa-solid fa-check"></i> التزام بأعلى معايير الجودة وأمن البيانات</li>
+      </ul>
+    </div>
+    <div class="about-img reveal-l">
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80" alt="فريق طبي يستخدم تقنيات ذكية" loading="lazy">
+      <div class="about-badge">
+        <i class="fa-solid fa-award"></i>
+        <div><b>+10 سنوات</b><span>خبرة تراكمية في التقنية الصحية</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Vision & Mission ============ -->
+<section class="vm section-pad">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="eyebrow"><i class="fa-solid fa-compass"></i> توجهنا الاستراتيجي</span>
+      <h2 class="section-title">الرؤية والرسالة</h2>
+    </div>
+    <div class="vm-grid">
+      <div class="vm-card reveal">
+        <div class="vm-icon"><i class="fa-solid fa-eye"></i></div>
+        <h3>رؤيتنا</h3>
+        <p>أن نكون الشريك الرقمي المُفضّل في المملكة العربية السعودية والمنطقة، في تقديم الحلول الذكية المدعومة بالذكاء الاصطناعي في القطاع الصحي.</p>
+      </div>
+      <div class="vm-card mission reveal">
+        <div class="vm-icon"><i class="fa-solid fa-paper-plane"></i></div>
+        <h3>رسالتنا</h3>
+        <p>تمكين المنشآت الصحية من تحقيق التميز التشغيلي والريادة الرقمية، من خلال تطوير أنظمة ذكية تُلبي احتياجات القطاع الصحي وتتوافق مع رؤية المملكة 2030.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Services ============ -->
+<section class="services section-pad" id="services">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="eyebrow"><i class="fa-solid fa-briefcase-medical"></i> ماذا نقدم</span>
+      <h2 class="section-title">خدماتنا في مجال الصحة</h2>
+      <p class="section-sub">منظومة متكاملة من الحلول التقنية الذكية المصممة خصيصاً للقطاع الصحي</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon si-1"><i class="fa-solid fa-laptop-medical"></i></div>
+        <h3>تطوير الأنظمة الصحية الذكية</h3>
+        <p>تصميم وبناء أنظمة معلومات صحية متكاملة تدير السجلات والعمليات الطبية بكفاءة ودقة عالية.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon si-2"><i class="fa-solid fa-chart-line"></i></div>
+        <h3>التحليلات التنبؤية للأمراض</h3>
+        <p>نماذج ذكاء اصطناعي تحلل البيانات الصحية للتنبؤ المبكر بالأمراض وتحسين نتائج الرعاية.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon si-3"><i class="fa-solid fa-user-doctor"></i></div>
+        <h3>دعم اتخاذ القرار السريري</h3>
+        <p>أدوات ذكية تساند الكوادر الطبية بتوصيات مبنية على الأدلة لاتخاذ قرارات سريرية أدق وأسرع.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon si-4"><i class="fa-solid fa-gears"></i></div>
+        <h3>أتمتة العمليات الإدارية</h3>
+        <p>أتمتة المواعيد والفوترة وإدارة الموارد لتقليل الأعباء الإدارية ورفع الكفاءة التشغيلية.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon si-5"><i class="fa-solid fa-house-medical"></i></div>
+        <h3>الرعاية الصحية عن بُعد</h3>
+        <p>منصات استشارات ومراقبة مرضى عن بُعد توصل الرعاية الصحية إلى كل مريض أينما كان.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon si-1"><i class="fa-solid fa-shield-heart"></i></div>
+        <h3>أمن البيانات الصحية</h3>
+        <p>حماية متقدمة للبيانات الطبية وفق أعلى المعايير المحلية والعالمية لضمان الخصوصية والامتثال.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Methodology ============ -->
+<section class="method section-pad" id="method">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="eyebrow"><i class="fa-solid fa-diagram-project"></i> كيف نعمل</span>
+      <h2 class="section-title">منهجيتنا في تطوير الأنظمة</h2>
+      <p class="section-sub">مسار عمل منهجي من ست مراحل يضمن جودة المنتج واستدامته</p>
+    </div>
+    <div class="timeline">
+      <div class="step reveal">
+        <div class="step-circle">1</div>
+        <h3>الاستكشاف والتحليل</h3>
+        <p>دراسة احتياجات المنشأة وتحليل بيئة العمل بدقة.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-circle">2</div>
+        <h3>التصميم الهندسي</h3>
+        <p>بناء معمارية النظام وتجربة المستخدم المثلى.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-circle">3</div>
+        <h3>التطوير والبرمجة</h3>
+        <p>تنفيذ النظام بأحدث التقنيات وأفضل الممارسات.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-circle">4</div>
+        <h3>دمج الذكاء الاصطناعي</h3>
+        <p>تضمين نماذج الذكاء الاصطناعي في نواة النظام.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-circle">5</div>
+        <h3>الاختبار والتشغيل</h3>
+        <p>اختبارات شاملة وإطلاق آمن ومستقر للنظام.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-circle">6</div>
+        <h3>الدعم المستمر</h3>
+        <p>متابعة وتحديثات ودعم فني على مدار الساعة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Why Us ============ -->
+<section class="why section-pad">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="eyebrow"><i class="fa-solid fa-star"></i> مزايانا التنافسية</span>
+      <h2 class="section-title">لماذا تختار «لبنات الحلول الذكية»؟</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <i class="fa-solid fa-location-dot"></i>
+        <div><h3>خبرة محلية</h3><p>فهم عميق لاحتياجات القطاع الصحي السعودي ومتطلباته التنظيمية.</p></div>
+      </div>
+      <div class="why-item reveal">
+        <i class="fa-solid fa-globe"></i>
+        <div><h3>تقنيات عالمية</h3><p>نوظف أحدث تقنيات الذكاء الاصطناعي والحوسبة السحابية عالمياً.</p></div>
+      </div>
+      <div class="why-item reveal">
+        <i class="fa-solid fa-puzzle-piece"></i>
+        <div><h3>حلول مخصصة</h3><p>نصمم كل نظام ليتوافق تماماً مع طبيعة عمل منشأتك الصحية.</p></div>
+      </div>
+      <div class="why-item reveal">
+        <i class="fa-solid fa-lock"></i>
+        <div><h3>أمان وموثوقية</h3><p>التزام صارم بمعايير أمن المعلومات وحماية البيانات الصحية.</p></div>
+      </div>
+      <div class="why-item reveal">
+        <i class="fa-solid fa-headset"></i>
+        <div><h3>دعم شامل</h3><p>فريق دعم متخصص يرافقك قبل الإطلاق وبعده على مدار الساعة.</p></div>
+      </div>
+      <div class="why-item reveal">
+        <i class="fa-solid fa-flag"></i>
+        <div><h3>مواءمة رؤية 2030</h3><p>حلولنا تدعم مستهدفات التحول الرقمي الصحي في رؤية المملكة.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta section-pad">
+  <div class="container reveal">
+    <h2>جاهزون لبناء نظامك الذكي القادم؟</h2>
+    <p>إذا كنت تدير مستشفى، عيادة، أو مركز صحي تسعى لتحسين جودة الرعاية الصحية — نحن هنا لمساعدتك.</p>
+    <a href="#contact" class="btn btn-white"><i class="fa-solid fa-bolt"></i> ابدأ مشروعك الآن</a>
+  </div>
+</section>
+
+<!-- ============ Footer ============ -->
+<footer class="footer" id="contact">
+  <div class="container footer-grid">
+    <div>
+      <a href="#home" class="logo">
+        <span class="logo-mark"><i class="fa-solid fa-brain"></i></span>
+        <span class="logo-text">
+          <b>لبنات الحلول الذكية</b>
+          <span>LABENAT SMART SOLUTIONS</span>
+        </span>
+      </a>
+      <p>شركة سعودية متخصصة في الذكاء الاصطناعي والحلول التقنية للقطاع الصحي، نبني أنظمة ذكية تصنع فرقاً حقيقياً في جودة الرعاية الصحية.</p>
+    </div>
+    <div>
+      <h4>روابط سريعة</h4>
+      <ul class="footer-links">
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#about">من نحن</a></li>
+        <li><a href="#services">خدماتنا</a></li>
+        <li><a href="#contact">تواصل معنا</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>معلومات التواصل</h4>
+      <ul class="contact-info">
+        <li><i class="fa-solid fa-location-dot"></i> الرياض، المملكة العربية السعودية</li>
+        <li><i class="fa-solid fa-envelope"></i> abdulkarim.alrasheed@labenat.sa</li>
+        <li><i class="fa-solid fa-phone"></i> <span dir="ltr">+966 55 519 3311</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 لبنات الحلول الذكية. جميع الحقوق محفوظة.</div>
+</footer>
+
+<script>
+/* ===== Navbar scroll ===== */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* ===== Mobile menu ===== */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  const open = navLinks.classList.contains('open');
+  hamburger.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+}));
+
+/* ===== Scroll reveal (Intersection Observer) ===== */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.transitionDelay = (e.target.dataset.delay || 0) + 'ms';
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+/* Stagger siblings inside grids */
+document.querySelectorAll('.services-grid, .why-grid, .vm-grid, .timeline, .hero-stats').forEach(grid => {
+  [...grid.children].forEach((child, i) => child.dataset.delay = i * 120);
+});
+document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => observer.observe(el));
+
+/* ===== Animated counters ===== */
+const counters = document.querySelectorAll('.counter');
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix || '';
+    const dur = 1800, start = performance.now();
+    const tick = now => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    counterObs.unobserve(el);
+  });
+}, { threshold: 0.6 });
+counters.forEach(c => counterObs.observe(c));
+
+/* ===== Hero particles ===== */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+const mouse = { x: -9999, y: -9999 };
+
+function resize() {
+  W = canvas.width = canvas.offsetWidth;
+  H = canvas.height = canvas.offsetHeight;
+}
+window.addEventListener('resize', () => { resize(); initParticles(); });
+resize();
+
+function initParticles() {
+  const count = Math.min(70, Math.floor(W * H / 22000));
+  particles = Array.from({ length: count }, () => ({
+    x: Math.random() * W,
+    y: Math.random() * H,
+    r: Math.random() * 2 + 0.6,
+    vx: (Math.random() - .5) * .35,
+    vy: (Math.random() - .5) * .35,
+    o: Math.random() * .5 + .25
+  }));
+}
+initParticles();
+
+canvas.parentElement.addEventListener('mousemove', e => {
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = e.clientX - rect.left;
+  mouse.y = e.clientY - rect.top;
+});
+canvas.parentElement.addEventListener('mouseleave', () => { mouse.x = mouse.y = -9999; });
+
+function drawParticles() {
+  ctx.clearRect(0, 0, W, H);
+  for (const p of particles) {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    // gentle mouse repel
+    const dx = p.x - mouse.x, dy = p.y - mouse.y;
+    const d = Math.hypot(dx, dy);
+    if (d < 110 && d > 0) { p.x += dx / d * 1.2; p.y += dy / d * 1.2; }
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(58,173,227,${p.o})`;
+    ctx.fill();
+  }
+  // connective lines
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const a = particles[i], b = particles[j];
+      const d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (d < 130) {
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = `rgba(58,173,227,${(1 - d / 130) * .18})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+/* ===== Interactive neural network on brain SVG ===== */
+const svg = document.getElementById('brainSvg');
+const nodesG = document.getElementById('netNodes');
+const linesG = document.getElementById('netLines');
+const nodePoints = [
+  [200,60],[150,72],[120,95],[95,120],[72,140],[70,180],[95,220],[112,255],
+  [150,285],[200,285],[250,285],[288,255],[305,220],[330,180],[328,140],[305,120],
+  [280,95],[250,72],[160,150],[240,150],[200,200],[180,235],[220,235],[200,120],[130,170],[270,170]
+];
+const brainNodes = nodePoints.map(([x, y], i) => {
+  const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  c.setAttribute('cx', x); c.setAttribute('cy', y);
+  c.setAttribute('r', i % 5 === 0 ? 5 : 3.4);
+  c.setAttribute('fill', '#3AADE3');
+  c.style.filter = 'drop-shadow(0 0 4px rgba(58,173,227,.8))';
+  c.dataset.bx = x; c.dataset.by = y;
+  nodesG.appendChild(c);
+  return c;
+});
+// connect near nodes
+for (let i = 0; i < nodePoints.length; i++) {
+  for (let j = i + 1; j < nodePoints.length; j++) {
+    const [ax, ay] = nodePoints[i], [bx, by] = nodePoints[j];
+    if (Math.hypot(ax - bx, ay - by) < 78) {
+      const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      l.setAttribute('x1', ax); l.setAttribute('y1', ay);
+      l.setAttribute('x2', bx); l.setAttribute('y2', by);
+      l.dataset.a = i; l.dataset.b = j;
+      linesG.appendChild(l);
+    }
+  }
+}
+// mouse parallax on nodes
+let svgMouse = { x: -9999, y: -9999 };
+svg.addEventListener('mousemove', e => {
+  const pt = svg.createSVGPoint();
+  pt.x = e.clientX; pt.y = e.clientY;
+  const loc = pt.matrixTransform(svg.getScreenCTM().inverse());
+  svgMouse = loc;
+});
+svg.addEventListener('mouseleave', () => { svgMouse = { x: -9999, y: -9999 }; });
+let t = 0;
+function animateBrain() {
+  t += 0.02;
+  brainNodes.forEach((c, i) => {
+    const bx = +c.dataset.bx, by = +c.dataset.by;
+    let ox = Math.sin(t + i) * 2.2, oy = Math.cos(t * 0.8 + i) * 2.2;
+    const dx = bx - svgMouse.x, dy = by - svgMouse.y;
+    const d = Math.hypot(dx, dy);
+    if (d < 70 && d > 0) { ox += dx / d * (70 - d) * 0.35; oy += dy / d * (70 - d) * 0.35; }
+    c.setAttribute('cx', bx + ox); c.setAttribute('cy', by + oy);
+    const pulse = 3 + Math.sin(t * 2 + i * 1.3) * 1.2;
+    c.setAttribute('r', Math.max(2, (i % 5 === 0 ? pulse + 2 : pulse)));
+  });
+  linesG.querySelectorAll('line').forEach(l => {
+    const a = brainNodes[+l.dataset.a], b = brainNodes[+l.dataset.b];
+    l.setAttribute('x1', a.getAttribute('cx')); l.setAttribute('y1', a.getAttribute('cy'));
+    l.setAttribute('x2', b.getAttribute('cx')); l.setAttribute('y2', b.getAttribute('cy'));
+  });
+  requestAnimationFrame(animateBrain);
+}
+animateBrain();
+</script>
+</body>
+</html>
